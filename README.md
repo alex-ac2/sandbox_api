@@ -8,12 +8,17 @@ Local Express server for testing basic endpoints
     git clone https://github.com/alex-ac2/sandbox_api.git
     ```
 
-[2] Install dependencies
+[2] Navigate into project directory
+    ```
+    cd sandbox_api
+    ```
+
+[3] Install dependencies
     ```
     npm install
     ```
 
-[3] Run with Nodemon!
+[4] Run with Nodemon!
     ```
     npm run local
     ```
