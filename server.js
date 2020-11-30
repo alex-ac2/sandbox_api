@@ -19,7 +19,7 @@ app.get('/greeting', (req, res) => {
   if (req.query.name) {
     return res.send(`Hello ${req.query.name}`).status(200);
   } 
-  return res.json({ greeting: 'Why hello there!' }).status(200);
+  return res.send('Why hello there, what is your name?').status(200);
 })
 
 // localhost:3000/greeting/alex
@@ -30,9 +30,17 @@ app.get('/greeting/:name', (req, res) => {
   return res.send(`This is your param: ${req.params.name}`).status(200);
 })
 
-app.post('/test', (req, res) => {
+
+// localhost:3000/message -- 
+app.post('/message', (req, res) => {
   console.log('Request Body: ', req.body);
-  return res.json({ test_response: 'Hello from test post route' }).status(200);
+  const { username, message } = req.body;
+
+  if (username && message) {
+    res.json({ status: 'posted', username, message }).status(200);
+  } else {
+    res.json({ status: 'Missing message data in request body' }).status(400);
+  }
 })
 
 app.listen(PORT, () => console.log(`Example API listening on port ${PORT}!`))
